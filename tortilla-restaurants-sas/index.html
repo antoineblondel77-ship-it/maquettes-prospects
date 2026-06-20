@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TORTILLA RESTAURANTS SAS — Site Web Professionnel</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --primary: #1A1A2E; --accent: #E94560; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Poppins', sans-serif; background: #fff; color: #1a1a1a; }
+  .hero { background: var(--primary); color: white; padding: 100px 40px; text-align: center; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+  .hero h1 { font-size: clamp(2rem, 5vw, 4rem); font-weight: 700; margin-bottom: 16px; }
+  .hero p { font-size: 1.2rem; opacity: 0.8; margin-bottom: 40px; max-width: 600px; }
+  .btn { background: var(--accent); color: white; padding: 16px 36px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: transform 0.2s, box-shadow 0.2s; display: inline-block; }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+  section { padding: 80px 40px; max-width: 1100px; margin: 0 auto; }
+  h2 { font-size: 2rem; font-weight: 700; color: var(--primary); margin-bottom: 16px; }
+  .subtitle { color: #666; margin-bottom: 48px; font-size: 1.05rem; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .card { background: #f8f9fa; border-radius: 16px; padding: 32px; transition: transform 0.3s, box-shadow 0.3s; border-top: 4px solid var(--accent); }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+  .card h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 12px; color: var(--primary); }
+  .card p { color: #555; line-height: 1.6; }
+  .about { background: #f8f9fa; }
+  .about-inner { max-width: 1100px; margin: 0 auto; padding: 80px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about-text h2 { margin-bottom: 20px; }
+  .about-text p { color: #555; line-height: 1.8; }
+  .about-visual { background: var(--primary); border-radius: 20px; height: 300px; display: flex; align-items: center; justify-content: center; }
+  .about-visual span { font-size: 5rem; }
+  .contact-section { background: var(--primary); color: white; text-align: center; padding: 80px 40px; }
+  .contact-section h2 { color: white; margin-bottom: 16px; }
+  .contact-section p { opacity: 0.8; margin-bottom: 32px; }
+  .banner { background: var(--accent); color: white; text-align: center; padding: 60px 40px; }
+  .banner h2 { font-size: 1.6rem; margin-bottom: 12px; }
+  .banner p { opacity: 0.9; margin-bottom: 28px; }
+  footer { background: var(--primary); color: white; text-align: center; padding: 32px; font-size: 0.9rem; opacity: 0.8; }
+  footer a { color: var(--accent); text-decoration: none; }
+  .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  @media (max-width: 768px) { .about-inner { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>TORTILLA RESTAURANTS SAS</h1>
+  <p>Bienvenue sur votre futur site web — professionnel, moderne et pensé pour vos clients à PARIS.</p>
+  <a href="#contact" class="btn">Nous contacter</a>
+</div>
+
+<section class="fade-in">
+  <h2>Nos services</h2>
+  <p class="subtitle">Tout ce dont vous avez besoin, au même endroit.</p>
+  <div class="cards">
+    <div class="card">
+      <h3>⚡ Service Premium</h3>
+      <p>Une approche professionnelle et soignée pour chaque prestation. Votre satisfaction est notre priorité.</p>
+    </div>
+    <div class="card">
+      <h3>🎯 Expertise locale</h3>
+      <p>Basés à PARIS, nous connaissons parfaitement les besoins de nos clients locaux.</p>
+    </div>
+    <div class="card">
+      <h3>✅ Qualité garantie</h3>
+      <p>Des années d'expérience dans le secteur restaurant pour vous offrir le meilleur résultat.</p>
+    </div>
+  </div>
+</section>
+
+<div class="about">
+  <div class="about-inner">
+    <div class="about-text fade-in">
+      <h2>À propos de nous</h2>
+      <p>TORTILLA RESTAURANTS SAS est une entreprise locale engagée à offrir des services de qualité à ses clients. Notre équipe passionnée met tout en œuvre pour vous satisfaire à chaque étape.</p>
+      <br>
+      <p>Installés à PARIS, nous sommes fiers de servir notre communauté avec professionnalisme et bienveillance.</p>
+    </div>
+    <div class="about-visual">
+      <span>🏆</span>
+    </div>
+  </div>
+</div>
+
+<section id="contact" class="fade-in">
+  <div class="contact-section" style="border-radius: 20px;">
+    <h2>Contactez-nous</h2>
+    <p>Prêt à travailler ensemble ? Nous sommes disponibles pour répondre à toutes vos questions.</p>
+    <a href="mailto:contact@tortillarestaurantss.fr" class="btn">Envoyer un message</a>
+  </div>
+</section>
+
+<div class="banner">
+  <h2>Cette maquette a été créée spécialement pour TORTILLA RESTAURANTS SAS</h2>
+  <p>par <strong>Okane.pro</strong> — Création de sites web professionnels</p>
+  <a href="mailto:contact@okane.pro" class="btn" style="background: white; color: var(--accent);">Obtenir mon site → contact@okane.pro</a>
+</div>
+
+<footer>
+  Maquette réalisée par <a href="https://okane.pro">Okane.pro</a> — contact@okane.pro — 2026-06-20
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
