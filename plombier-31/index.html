@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLOMBIER 31</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .hero {
+            background-image: linear-gradient(to bottom, #1B4332, #2C5F4E);
+            background-size: 100% 300px;
+            background-position: 0% 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+        }
+        .hero p {
+            font-size: 18px;
+            font-weight: 300;
+        }
+        .hero button {
+            background-color: #40916C;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .services {
+            padding: 100px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .service {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: calc(33.33% - 40px);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .service:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        .service h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .service p {
+            font-size: 16px;
+            font-weight: 300;
+        }
+        .about {
+            padding: 100px 20px;
+            text-align: center;
+        }
+        .about h2 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .about p {
+            font-size: 18px;
+            font-weight: 300;
+        }
+        .contact {
+            padding: 100px 20px;
+            text-align: center;
+        }
+        .contact h2 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .contact p {
+            font-size: 18px;
+            font-weight: 300;
+        }
+        .contact button {
+            background-color: #40916C;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .banner {
+            background-color: #1B4332;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .banner button {
+            background-color: #40916C;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        footer {
+            background-color: #2C5F4E;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .service {
+                width: calc(50% - 40px);
+            }
+        }
+        @media (max-width: 480px) {
+            .service {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>PLOMBIER 31</h1>
+        <p>Plombier à Sainte-Foy-de-Peyrolières</p>
+        <button>Contacter nous</button>
+    </div>
+    <div class="services">
+        <div class="service">
+            <h2>Installation</h2>
+            <p>Installation de sanitaires, de robinets et de tuyauterie</p>
+        </div>
+        <div class="service">
+            <h2>Réparation</h2>
+            <p>Réparation de fuites, de chutes de pression et de problèmes de tuyauterie</p>
+        </div>
+        <div class="service">
+            <h2>Entretien</h2>
+            <p>Entretien régulier de vos installations pour éviter les problèmes</p>
+        </div>
+    </div>
+    <div class="about">
+        <h2>À propos de nous</h2>
+        <p>PLOMBIER 31 est une entreprise de plomberie basée à Sainte-Foy-de-Peyrolières. Nous proposons des services de plomberie de haute qualité pour les particuliers et les professionnels.</p>
+    </div>
+    <div class="contact">
+        <h2>Contacter nous</h2>
+        <p>Pour plus d'informations ou pour prendre rendez-vous, n'hésitez pas à nous contacter.</p>
+        <button>Contacter nous</button>
+    </div>
+    <div class="banner">
+        <p>Cette maquette a été créée pour PLOMBIER 31 par Okane.pro</p>
+        <button><a href="mailto:contact@okane.pro">Contactez-nous</a></button>
+    </div>
+    <footer>
+        <p>Site créé par <a href="https://okane.pro">Okane.pro</a> — contact@okane.pro</p>
+    </footer>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.5 });
+        const sections = document.querySelectorAll('div');
+        sections.forEach((section) => {
+            observer.observe(section);
+        });
+        document.querySelectorAll('div').forEach((div) => {
+            div.classList.add('invisible');
+        });
+        document.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('div');
+            sections.forEach((section) => {
+                if (section.getBoundingClientRect().top < window.innerHeight / 2) {
+                    section.classList.add('visible');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
