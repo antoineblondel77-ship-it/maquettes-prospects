@@ -1,0 +1,181 @@
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PLOMBIER REGIS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --couleur-principale: #1B4332;
+  --couleur-accent: #40916C;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+.hero {
+  background-image: linear-gradient(to bottom, var(--couleur-principale), #fff);
+  background-size: 100% 300px;
+  background-position: 0% 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+}
+.hero h1 {
+  font-size: 48px;
+  font-weight: 600;
+}
+.hero p {
+  font-size: 18px;
+  font-weight: 300;
+}
+.hero button {
+  background-color: var(--couleur-accent);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 50px 0;
+}
+.service {
+  background-color: #fff;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: calc(33.33% - 40px);
+  transition: all 0.3s ease;
+}
+.service:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+.service h2 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.service p {
+  font-size: 16px;
+  font-weight: 300;
+}
+.a-propos {
+  background-color: #f7f7f7;
+  padding: 50px 0;
+  text-align: center;
+}
+.a-propos h2 {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.a-propos p {
+  font-size: 18px;
+  font-weight: 300;
+}
+.contact {
+  background-color: var(--couleur-principale);
+  padding: 50px 0;
+  color: #fff;
+  text-align: center;
+}
+.contact h2 {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.contact p {
+  font-size: 18px;
+  font-weight: 300;
+}
+.banniere {
+  background-color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+.banniere p {
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+.banniere a {
+  text-decoration: none;
+  color: var(--couleur-accent);
+}
+footer {
+  background-color: var(--couleur-principale);
+  padding: 10px;
+  color: #fff;
+  text-align: center;
+  clear: both;
+}
+footer a {
+  text-decoration: none;
+  color: #fff;
+}
+</style>
+</head>
+<body>
+<section class="hero">
+  <h1>PLOMBIER REGIS</h1>
+  <p>Plombier à Pantin</p>
+  <button>Prendre rendez-vous</button>
+</section>
+<section class="services">
+  <div class="service">
+    <h2>Installation de robinets</h2>
+    <p>Nos plombiers sont qualifiés pour installer tous types de robinets</p>
+  </div>
+  <div class="service">
+    <h2>Réparation de fuites</h2>
+    <p>Nos plombiers sont équipés pour réparer toutes les fuites</p>
+  </div>
+  <div class="service">
+    <h2>Entretien de chaudières</h2>
+    <p>Nos plombiers sont qualifiés pour l'entretien de vos chaudières</p>
+  </div>
+</section>
+<section class="a-propos">
+  <h2>À propos de nous</h2>
+  <p>Nous sommes une entreprise de plomberie basée à Pantin, spécialisée dans l'installation, la réparation et l'entretien de tous les systèmes de plomberie</p>
+</section>
+<section class="contact">
+  <h2>Prendre contact</h2>
+  <p>N'hésitez pas à nous contacter pour toutes vos questions ou pour prendre rendez-vous</p>
+  <a href="mailto:contact@plombierregis.com">contact@plombierregis.com</a>
+</section>
+<section class="banniere">
+  <p>Cette maquette a été créée pour PLOMBIER REGIS (PLOMBIER REGIS) par Okane.pro</p>
+  <a href="mailto:contact@okane.pro">contact@okane.pro</a>
+</section>
+<footer>
+  Site créé par <a href="https://okane.pro">Okane.pro</a> — contact@okane.pro
+</footer>
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('fade-in');
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('section').forEach((section) => {
+  observer.observe(section);
+});
+</script>
+</body>
+</html>
