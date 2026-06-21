@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LES BOULANGERIES DE L'EST</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <style>
+        :root {
+            --primary: #8B5E3C;
+            --accent: #F5C842;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar .logo {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .navbar ul li {
+            margin-right: 20px;
+        }
+        .navbar ul li a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.2s ease;
+        }
+        .navbar ul li a:hover {
+            color: var(--primary);
+        }
+        .navbar .cta {
+            background-color: var(--accent);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+        }
+        .hero {
+            min-height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+        .hero .title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .hero .btns {
+            display: flex;
+        }
+        .hero .btn {
+            background-color: var(--accent);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            margin-right: 1rem;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        .stat {
+            margin-right: 20px;
+        }
+        .stat .num {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        .services {
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .service {
+            margin: 1rem;
+            width: calc(33.33% - 2rem);
+            background-color: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            transition: transform 0.2s ease;
+        }
+        .service:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .service img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px 12px 0 0;
+        }
+        .about {
+            padding: 2rem;
+            display: flex;
+        }
+        .about .image {
+            margin-right: 1rem;
+        }
+        .about .text {
+            flex: 1;
+        }
+        .testimony {
+            padding: 2rem;
+            background-color: #f7f7f7;
+            text-align: center;
+        }
+        .testimony .rating {
+            font-size: 1.5rem;
+            color: #ffd700;
+        }
+        .cta-final {
+            padding: 2rem;
+            background-color: var(--primary);
+            color: #fff;
+            text-align: center;
+        }
+        .cta-final .title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .cta-final .btn {
+            background-color: var(--accent);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .services {
+                flex-direction: column;
+            }
+            .service {
+                width: 100%;
+                margin: 1rem 0;
+            }
+            .about {
+                flex-direction: column;
+            }
+            .about .image {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">LES BOULANGERIES DE L'EST</div>
+        <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">À propos</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="cta">Devis gratuit</button>
+    </nav>
+    <section class="hero">
+        <h1 class="title">Boulangerie artisanale de qualité</h1>
+        <p class="subtitle">Découvrez nos délices frais et savoureux</p>
+        <div class="btns">
+            <button class="btn">Découvrir</button>
+            <button class="btn">Commander</button>
+        </div>
+        <div class="stats">
+            <div class="stat">
+                <span class="num">20+</span>
+                <span>ans d'expérience</span>
+            </div>
+            <div class="stat">
+                <span class="num">1000+</span>
+                <span>clients satisfaits</span>
+            </div>
+            <div class="stat">
+                <span class="num">24h</span>
+                <span>réponse garantie</span>
+            </div>
+            <div class="stat">
+                <span class="num">100%</span>
+                <span>produits frais</span>
+            </div>
+        </div>
+    </section>
+    <section id="services" class="services">
+        <div class="service">
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80" alt="Pain frais" style="width:100%;height:220px;object-fit:cover;border-radius:12px 12px 0 0;">
+            <div>
+                <span>🍞</span>
+                <h2>Pain frais</h2>
+                <p>Notre pain est cuit frais chaque jour pour vous offrir le meilleur goût et la meilleure texture.</p>
+                <p>Nous utilisons seulement les meilleurs ingrédients pour créer des pains délicieux et sains.</p>
+            </div>
+        </div>
+        <div class="service">
+            <img src="https://images.unsplash.com/photo-1555507036-ab794f4b6e3e?w=600&q=80" alt="Viennoiseries" style="width:100%;height:220px;object-fit:cover;border-radius:12px 12px 0 0;">
+            <div>
+                <span>🥐</span>
+                <h2>Viennoiseries</h2>
+                <p>Nos viennoiseries sont préparées avec amour et soin pour vous offrir un moment de plaisir.</p>
+                <p>De la croissant au pain au chocolat, nous avons tout ce qu'il vous faut pour commencer la journée.</p>
+            </div>
+        </div>
+        <div class="service">
+            <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=600&q=80" alt="Gâteaux" style="width:100%;height:220px;object-fit:cover;border-radius:12px 12px 0 0;">
+            <div>
+                <span>🎂</span>
+                <h2>Gâteaux</h2>
+                <p>Nos gâteaux sont créés pour vous offrir un moment de pure joie.</p>
+                <p>De l'anniversaire au mariage, nous avons le gâteau parfait pour votre occasion spéciale.</p>
+            </div>
+        </div>
+        <div class="service">
+            <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc7e?w=600&q=80" alt="Tartes" style="width:100%;height:220px;object-fit:cover;border-radius:12px 12px 0 0;">
+            <div>
+                <span>🥧</span>
+                <h2>Tartes</h2>
+                <p>Nos tartes sont préparées avec les meilleurs ingrédients pour vous offrir un goût unique.</p>
+                <p>De la tarte aux fruits à la tarte au chocolat, nous avons tout ce qu'il vous faut pour satisfaire votre envie de sucré.</p>
+            </div>
+        </div>
+        <div class="service">
+            <img src="https://images.unsplash.com/photo-1586444248902-2f64eddc8951?w=600&q=80" alt="Quiches" style="width:100%;height:220px;object-fit:cover;border-radius:12px 12px 0 0;">
+            <div>
+                <span>🥚</span>
+                <h2>Quiches</h2>
+                <p>Nos quiches sont créées pour vous offrir un repas léger et délicieux.</p>
+                <p>De la quiche lorraine à la quiche aux légumes, nous avons tout ce qu'il vous faut pour un repas rapide et facile.</p>
+            </div>
+        </div>
+        <div class="service">
+            <img src="https://images.unsplash.com/photo-1464219789935-c2d9d9aba644?w=600&q=80" alt="Sandwichs" style="width:100%;height:220px;object-fit:cover;border-radius:12px 12px 0 0;">
+            <div>
+                <span>🥪</span>
+                <h2>Sandwichs</h2>
+                <p>Nos sandwichs sont préparés avec les meilleurs ingrédients pour vous offrir un repas rapide et délicieux.</p>
+                <p>De la sandwich au jambon à la sandwich végétarienne, nous avons tout ce qu'il vous faut pour un repas sur le pouce.</p>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="about">
+        <div class="image">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80" alt="Boulangerie" style="width:100%;height:220px;object-fit:cover;">
+        </div>
+        <div class="text">
+            <h2>À propos de nous</h2>
+            <p>Nous sommes une boulangerie artisanale située à Clouange, spécialisée dans la création de pains, viennoiseries, gâteaux et autres délices.</p>
+            <p>Nous utilisons seulement les meilleurs ingrédients pour créer des produits de haute qualité qui vous offrent un moment de pure joie.</p>
+            <ul>
+                <li>✓ Produits frais et savoureux</li>
+                <li>✓ Ingrédients de haute qualité</li>
+                <li>✓ Création de produits uniques et délicieux</li>
+                <li>✓ Service client personnalisé</li>
+            </ul>
+            <h2>Nos engagements</h2>
+            <div>
+                <span>🍞</span>
+                <h3>Produits frais</h3>
+                <p>Nous nous engageons à vous offrir des produits frais et savoureux chaque jour.</p>
+            </div>
+            <div>
+                <span>👨‍🍳</span>
+                <h3>Équipe de professionnels</h3>
+                <p>Nous avons une équipe de professionnels passionnés et dévoués qui travaillent pour vous offrir le meilleur service possible.</p>
+            </div>
+            <div>
+                <span>📦</span>
+                <h3>Livraison rapide</h3>
+                <p>Nous nous engageons à vous livrer vos produits rapidement et efficacement.</p>
+            </div>
+        </div>
+    </section>
+    <section class="testimony">
+        <h2>Témoignage client</h2>
+        <p>★ ★ ★ ★ ★</p>
+        <p>"Je suis très satisfaite de la qualité des produits et du service client de cette boulangerie. Je recommande vivement !" - Marie, Clouange</p>
+    </section>
+    <section class="cta-final">
+        <h2 class="title">Rejoignez-nous</h2>
+        <p>Découvrez nos délices frais et savoureux et rejoignez notre communauté de clients satisfaits.</p>
+        <button class="btn">Découvrir</button>
+    </section>
+    <div style="background:#1a1a2e;color:white;text-align:center;padding:60px 40px;">
+        <img src="https://okane.pro/wp-content/uploads/2026/05/Logo-Okane-blanc.png" style="height:50px;margin-bottom:20px;">
+        <p>Cette maquette a été conçue pour booster la visibilité de LES BOULANGERIES DE L'EST. Découvrez comment Okane peut vous aider.</p>
+        <a href="https://okane.pro" style="background:#F5C842;color:white;padding:14px 28px;border-radius:8px;text-decoration:none;font-weight:600;display:inline-block;margin-top:20px;">Découvrir Okane →</a>
+    </div>
+    <footer>
+        <p>© 2026 LES BOULANGERIES DE L'EST — Clouange</p>
+    </footer>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, { threshold: 0.5 });
+        const elements = document.querySelectorAll('.service, .about, .testimony, .cta-final');
+        elements.forEach((element) => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
