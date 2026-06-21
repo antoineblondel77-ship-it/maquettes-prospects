@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LES BONS PLOMBIERS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .hero {
+            background-image: linear-gradient(to bottom, #1B4332, #1B4332);
+            background-size: 100% 300px;
+            background-position: 0% 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 18px;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+        .hero button {
+            background-color: #40916C;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .hero button:hover {
+            background-color: #2f6f57;
+        }
+        .services {
+            padding: 80px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: calc(33.33% - 40px);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        }
+        .card h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .card p {
+            font-size: 16px;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+        .about {
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .about h2 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .about p {
+            font-size: 18px;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+        .contact {
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .contact h2 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .contact p {
+            font-size: 18px;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+        .contact button {
+            background-color: #40916C;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .contact button:hover {
+            background-color: #2f6f57;
+        }
+        .banner {
+            background-color: #1B4332;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+        }
+        .banner button {
+            background-color: #40916C;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .banner button:hover {
+            background-color: #2f6f57;
+        }
+        footer {
+            background-color: #1B4332;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .card {
+                width: calc(50% - 40px);
+            }
+        }
+        @media (max-width: 480px) {
+            .card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>LES BONS PLOMBIERS</h1>
+        <p>Votre plombier de confiance à Paris</p>
+        <button>Obtenir un devis</button>
+    </section>
+    <section class="services">
+        <div class="card">
+            <h2>Installation de robinets</h2>
+            <p>Nos plombiers sont qualifiés pour installer des robinets de haute qualité</p>
+        </div>
+        <div class="card">
+            <h2>Réparation de fuites</h2>
+            <p>Nos plombiers sont équipés pour réparer les fuites d'eau de manière efficace</p>
+        </div>
+        <div class="card">
+            <h2>Entretien de sanitaires</h2>
+            <p>Nos plombiers sont là pour vous aider à entretenir vos sanitaires</p>
+        </div>
+    </section>
+    <section class="about">
+        <h2>À propos de nous</h2>
+        <p>Nous sommes une équipe de plombiers qualifiés et expérimentés, dédiés à fournir des services de haute qualité à nos clients</p>
+    </section>
+    <section class="contact">
+        <h2>Contactez-nous</h2>
+        <p>N'hésitez pas à nous contacter pour obtenir un devis ou pour en savoir plus sur nos services</p>
+        <button>Envoyer un message</button>
+    </section>
+    <section class="banner">
+        <p>Cette maquette a été créée pour LES BONS PLOMBIERS (LES BONS PLOMBIERS) par Okane.pro</p>
+        <button><a href="mailto:contact@okane.pro">Contactez-nous</a></button>
+    </section>
+    <footer>
+        <p>Site créé par <a href="https://okane.pro">Okane.pro</a> — contact@okane.pro</p>
+    </footer>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, { threshold: 0.5 });
+        const elements = document.querySelectorAll('.hero, .services, .about, .contact, .banner');
+        elements.forEach((element) => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
