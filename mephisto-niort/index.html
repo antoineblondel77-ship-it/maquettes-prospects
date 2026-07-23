@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mephisto — Niort</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:#1a2530;background:#fafbfc;line-height:1.65;overflow-x:hidden}
+
+/* LOADER */
+#loader{position:fixed;inset:0;background:#0f172a;display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .6s,visibility .6s}
+#loader.done{opacity:0;visibility:hidden}
+.loader-inner{text-align:center}
+.loader-icon{font-size:2.8rem;animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.15);opacity:1}}
+.loader-text{color:#6366f1;font-family:'Playfair Display',serif;font-size:1.3rem;margin-top:1rem;letter-spacing:3px;font-weight:700}
+.loader-bar{width:100px;height:3px;background:rgba(255,255,255,.12);border-radius:3px;margin:1rem auto 0;overflow:hidden}
+.loader-bar::after{content:'';display:block;height:100%;width:35%;background:#6366f1;border-radius:3px;animation:loadbar 1.2s ease-in-out infinite}
+@keyframes loadbar{0%{transform:translateX(-100%)}100%{transform:translateX(380%)}}
+
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;height:68px;background:transparent;transition:all .4s cubic-bezier(.4,0,.2,1)}
+.navbar.scrolled{background:rgba(15,23,42,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 4px 30px rgba(0,0,0,.2);height:58px}
+.nav-logo{font-family:'Playfair Display',serif;color:#fff;font-size:1.3rem;font-weight:900;letter-spacing:1px;text-decoration:none}
+.nav-logo span{color:#6366f1}
+.nav-links{display:flex;gap:2.2rem;align-items:center;list-style:none}
+.nav-links a{color:rgba(255,255,255,.8);font-size:.88rem;font-weight:600;padding:.3rem 0;position:relative;transition:color .25s;text-decoration:none}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:#6366f1;border-radius:2px;transition:width .3s cubic-bezier(.4,0,.2,1)}
+.nav-links a:hover{color:#6366f1}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff!important;padding:.5rem 1.3rem!important;border-radius:50px;font-weight:700!important;transition:transform .2s,box-shadow .2s!important;box-shadow:0 2px 12px rgba(99,102,241,.3);text-decoration:none}
+.nav-cta::after{display:none!important}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(99,102,241,.45)}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:101}
+.nav-toggle span{width:24px;height:2px;background:#fff;transition:all .3s;border-radius:2px}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#0f172a 0%,#1e293b 40%,#334155 100%)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,rgba(99,102,241,.15),transparent 60%)}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80') center/cover;opacity:.12}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;max-width:1200px;margin:0 auto;padding:8rem 2rem 4rem;align-items:center}
+.hero-text h1{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(2.4rem,4.5vw,3.5rem);line-height:1.12;margin-bottom:1.5rem;opacity:0;transform:translateY(30px);animation:fadeUp .8s .5s forwards}
+.hero-text h1 span{color:#6366f1}
+.hero-text p{color:rgba(255,255,255,.7);font-size:1.1rem;line-height:1.85;margin-bottom:2.2rem;max-width:500px;opacity:0;transform:translateY(30px);animation:fadeUp .8s .7s forwards}
+.hero-btns{display:flex;gap:1.2rem;flex-wrap:wrap;opacity:0;transform:translateY(30px);animation:fadeUp .8s .9s forwards}
+.hero-visual{position:relative;opacity:0;transform:translateY(30px);animation:fadeUp .8s 1.1s forwards}
+.hero-img-wrap{border-radius:20px;overflow:hidden;box-shadow:0 25px 60px rgba(0,0,0,.3);position:relative}
+.hero-img-wrap img{width:100%;height:380px;object-fit:cover;display:block}
+.hero-img-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(15,23,42,.88));padding:2rem 1.5rem 1.5rem}
+.hero-img-overlay strong{color:#fff;font-size:1.05rem;display:block;margin-bottom:.3rem}
+.hero-img-overlay span{color:rgba(255,255,255,.6);font-size:.85rem}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+
+/* STATS */
+.stats{background:linear-gradient(135deg,#6366f1,#4f46e5);padding:3rem 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center;color:#fff}
+.stats-grid .num{font-size:2.5rem;font-weight:800;display:block;font-family:'Playfair Display',serif}
+.stats-grid .label{font-size:.8rem;opacity:.9;text-transform:uppercase;letter-spacing:1px;font-weight:600}
+
+/* SECTIONS */
+.section{padding:6rem 0}
+.section-title{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;text-align:center;margin-bottom:.8rem;color:#0f172a}
+.section-sub{text-align:center;color:#666;margin-bottom:3.5rem;font-size:1.05rem;max-width:600px;margin-left:auto;margin-right:auto}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+
+/* SERVICES */
+.services{background:#f8f9fa}
+.service-card{background:#fff;border-radius:16px;padding:0;box-shadow:0 4px 20px rgba(0,0,0,.06);transition:transform .35s,box-shadow .35s;border:1px solid rgba(0,0,0,.04);overflow:hidden}
+.service-card:hover{transform:translateY(-10px);box-shadow:0 20px 50px rgba(0,0,0,.14)}
+.service-card-img{width:100%;height:180px;object-fit:cover;display:block}
+.service-card-body{padding:1.8rem}
+.service-card .icon{width:52px;height:52px;background:linear-gradient(135deg,#6366f1,#4f46e5);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.4rem}
+.service-card h3{font-size:1.1rem;font-weight:700;margin-bottom:.6rem;color:#0f172a}
+.service-card p{color:#666;font-size:.92rem;line-height:1.65}
+
+/* ABOUT */
+.about-visual{border-radius:20px;overflow:hidden;position:relative;min-height:340px}
+.about-visual img{width:100%;height:340px;object-fit:cover;display:block}
+.about-visual-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,23,42,.8),rgba(51,65,85,.6));display:flex;align-items:center;justify-content:center;padding:2.5rem;text-align:center}
+.about-visual-overlay p{color:#fff;font-size:1.05rem;line-height:1.75;max-width:350px;opacity:.9}
+.about-text h3{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:900;margin-bottom:1.2rem;color:#0f172a}
+.about-text p{color:#555;margin-bottom:1rem;font-size:1rem;line-height:1.75}
+.about-list{list-style:none;margin-top:1.5rem}
+.about-list li{padding:.55rem 0;padding-left:1.8rem;position:relative;color:#444;font-size:.95rem}
+.about-list li::before{content:'✓';position:absolute;left:0;color:#6366f1;font-weight:700;font-size:1.1rem}
+
+/* WHY */
+.why{background:#f8f9fa}
+.why-card{background:#fff;border-radius:16px;padding:2.5rem 2rem;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.06);transition:transform .3s,border-color .3s;border:1px solid rgba(0,0,0,.04);height:100%}
+.why-card:hover{transform:translateY(-6px);border-color:#6366f1}
+.why-card .icon{width:64px;height:64px;margin:0 auto 1.2rem;background:linear-gradient(135deg,#6366f1,#4f46e5);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem}
+.why-card h4{font-size:1.05rem;font-weight:700;margin-bottom:.6rem;color:#0f172a}
+.why-card p{color:#666;font-size:.9rem;line-height:1.6}
+
+/* TESTIMONIAL */
+.testimonial{background:linear-gradient(135deg,#0f172a 0%,#1e293b 40%,#334155 100%);color:#fff;text-align:center;padding:6rem 0;position:relative;overflow:hidden}
+.testimonial::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80') center/cover;opacity:.07}
+.testimonial .wrap{position:relative;z-index:1}
+.testimonial blockquote{font-family:'Playfair Display',serif;font-size:1.6rem;font-style:italic;max-width:750px;margin:0 auto 1.5rem;line-height:1.7;opacity:.95}
+.testimonial .author{font-size:.95rem;opacity:.7;font-weight:600}
+.testimonial .stars{color:#6366f1;font-size:1.3rem;margin-bottom:1.2rem;letter-spacing:3px}
+
+/* CTA */
+.cta{text-align:center;padding:6rem 0;background:#fff}
+.cta h2{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;margin-bottom:1rem;color:#0f172a}
+.cta p{color:#666;margin-bottom:2.2rem;font-size:1.05rem}
+
+/* OKANE CTA */
+.okane-cta{background:#1a1a2e;color:#fff;padding:4rem 0;text-align:center;position:relative;overflow:hidden}
+.okane-cta::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80') center/cover;opacity:.06}
+.okane-cta .wrap{position:relative;z-index:1}
+.okane-cta .okane-logo{height:44px;margin-bottom:1.2rem}
+.okane-cta p{font-size:1.05rem;opacity:.8;margin-bottom:1.5rem;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.7}
+
+/* FOOTER */
+.footer{background:#0a0a1a;color:#666;padding:2.5rem 0;text-align:center;font-size:.88rem}
+.footer a{color:#6366f1;text-decoration:none}
+
+/* BUTTONS */
+.btn{display:inline-block;padding:.85rem 2.2rem;border-radius:50px;font-weight:700;font-size:.9rem;transition:all .3s;cursor:pointer;border:none;text-decoration:none}
+.btn-primary{background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff;box-shadow:0 4px 15px rgba(99,102,241,.3)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(99,102,241,.45)}
+.btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.3)}
+.btn-outline:hover{border-color:#6366f1;color:#6366f1}
+.btn-okane{background:#fff;color:#1a1a2e;border-radius:50px;padding:.85rem 2.2rem;font-weight:700;display:inline-flex;align-items:center;gap:10px;box-shadow:0 4px 20px rgba(0,0,0,.15);text-decoration:none}
+.btn-okane:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.2)}
+
+/* SCROLL ANIMATIONS */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+.hero-grid{grid-template-columns:1fr;gap:2.5rem;padding:7rem 1.5rem 3rem}
+.hero-visual{order:-1}
+.hero-img-wrap img{height:260px}
+.grid-3{grid-template-columns:1fr 1fr}
+.grid-2{grid-template-columns:1fr;gap:2rem}
+.stats-grid{grid-template-columns:repeat(2,1fr)}
+.hero-text h1{font-size:2.2rem}
+.section-title{font-size:1.9rem}
+.testimonial blockquote{font-size:1.25rem}
+}
+
+@media(max-width:600px){
+.grid-3{grid-template-columns:1fr}
+.hero-text h1{font-size:1.8rem}
+.section{padding:4rem 0}
+.section-title{font-size:1.6rem}
+.navbar{padding:0 1.2rem}
+.nav-links{display:none}
+.nav-toggle{display:flex}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-inner">
+    <div class="loader-icon">✦</div>
+    <div class="loader-text">MEPHISTO</div>
+    <div class="loader-bar"></div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="#" class="nav-logo"><span>Mephisto</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://okane.pro" class="nav-cta">Devis gratuit</a></li>
+  </ul>
+  <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid">
+    <div class="hero-text">
+      <h1>Un service professionnel au cœur de <span>Niort</span></h1>
+      <p>Mephisto met son expertise et son sérieux au service de ses clients, avec une approche soignée et personnalisée pour chaque projet.</p>
+      <div class="hero-btns">
+        <a href="https://okane.pro" class="btn btn-primary">Demander un devis</a>
+        <a href="#services" class="btn btn-outline">Nos services</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img-wrap">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Mephisto" loading="eager">
+        <div class="hero-img-overlay">
+          <strong>Votre partenaire de confiance</strong>
+          <span>Niort</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="reveal"><span class="num">10+</span><span class="label">Ans d'expérience</span></div>
+      <div class="reveal"><span class="num">500+</span><span class="label">Clients satisfaits</span></div>
+      <div class="reveal"><span class="num">24h</span><span class="label">Réactivité</span></div>
+      <div class="reveal"><span class="num">100%</span><span class="label">Sur mesure</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services section" id="services">
+  <div class="wrap">
+    <div class="section-title reveal">Nos Services</div>
+    <div class="section-sub reveal">Des prestations complètes et de qualité pour répondre à tous vos besoins</div>
+    <div class="grid-3">
+      <div class="service-card reveal">
+        <img class="service-card-img" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&q=80" alt="Service premium" loading="lazy">
+        <div class="service-card-body">
+          <div class="icon">⭐</div>
+          <h3>Service premium</h3>
+          <p>Une approche professionnelle et soignée pour chaque prestation. Votre satisfaction est notre priorité.</p>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <img class="service-card-img" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=80" alt="Accompagnement" loading="lazy">
+        <div class="service-card-body">
+          <div class="icon">🤝</div>
+          <h3>Accompagnement</h3>
+          <p>Une équipe à votre écoute pour vous conseiller et vous accompagner à chaque étape.</p>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <img class="service-card-img" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80" alt="Expertise locale" loading="lazy">
+        <div class="service-card-body">
+          <div class="icon">🎯</div>
+          <h3>Expertise locale</h3>
+          <p>Basés à Niort, nous connaissons parfaitement les attentes de nos clients locaux.</p>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <img class="service-card-img" src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&q=80" alt="Qualité garantie" loading="lazy">
+        <div class="service-card-body">
+          <div class="icon">✅</div>
+          <h3>Qualité garantie</h3>
+          <p>Des années d'expérience pour vous offrir un résultat à la hauteur de vos exigences.</p>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <img class="service-card-img" src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80" alt="Conseils sur mesure" loading="lazy">
+        <div class="service-card-body">
+          <div class="icon">💡</div>
+          <h3>Conseils sur mesure</h3>
+          <p>Des solutions adaptées à votre situation, sans jargon et en toute transparence.</p>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <img class="service-card-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="Résultats concrets" loading="lazy">
+        <div class="service-card-body">
+          <div class="icon">📈</div>
+          <h3>Résultats concrets</h3>
+          <p>Un travail orienté résultats, pour faire avancer votre projet sereinement.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="grid-2">
+      <div class="about-visual reveal">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80" alt="Mephisto" loading="lazy">
+        <div class="about-visual-overlay">
+          <p>Une entreprise locale à Niort, engagée à offrir un service de qualité avec proximité et professionnalisme.</p>
+        </div>
+      </div>
+      <div class="about-text">
+        <h3 class="reveal">Pourquoi choisir Mephisto ?</h3>
+        <p class="reveal">Mephisto est une entreprise locale engagée à offrir des services de qualité à ses clients. Notre équipe passionnée met tout en œuvre pour vous satisfaire à chaque étape.</p>
+        <p class="reveal">Installés à Niort, nous sommes fiers de servir notre communauté avec professionnalisme et bienveillance.</p>
+        <ul class="about-list">
+          <li class="reveal">Entreprise locale et réactive</li>
+          <li class="reveal">Service personnalisé</li>
+          <li class="reveal">Conseils transparents</li>
+          <li class="reveal">Devis gratuit</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why section">
+  <div class="wrap">
+    <div class="section-title reveal">Nos Engagements</div>
+    <div class="section-sub reveal">Des valeurs fortes pour un service irréprochable</div>
+    <div class="grid-3">
+      <div class="why-card reveal">
+        <div class="icon">⏱️</div>
+        <h4>Réactivité</h4>
+        <p>Une prise en charge rapide et un suivi attentif de chacune de vos demandes.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="icon">🛡️</div>
+        <h4>Fiabilité</h4>
+        <p>Un engagement de qualité et de sérieux sur l'ensemble de nos prestations.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="icon">📍</div>
+        <h4>Proximité</h4>
+        <p>Basés à Niort, nous restons proches de nos clients et à leur écoute.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial">
+  <div class="wrap">
+    <div class="stars reveal">★★★★★</div>
+    <blockquote class="reveal">"Service impeccable et équipe à l'écoute. Je recommande Mephisto sans hésiter !"</blockquote>
+    <div class="author reveal">— Client satisfait, Niort</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="wrap">
+    <h2 class="reveal">Prêt à concrétiser votre projet ?</h2>
+    <p class="reveal">Contactez Mephisto pour un devis gratuit et personnalisé</p>
+    <div class="hero-btns reveal" style="justify-content:center">
+      <a href="https://okane.pro" class="btn btn-primary">Demander un devis gratuit</a>
+    </div>
+  </div>
+</section>
+
+<!-- OKANE CTA -->
+<section class="okane-cta">
+  <div class="wrap">
+    <img src="https://okane.pro/wp-content/uploads/2026/05/Logo-Okane-blanc.png" alt="Okane" class="okane-logo reveal">
+    <p class="reveal">Cette maquette a été conçue pour booster votre visibilité en ligne. Découvrez comment Okane peut vous aider à développer votre activité.</p>
+    <a href="https://okane.pro" class="btn-okane reveal" target="_blank" rel="noopener">Découvrir Okane →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2026 Mephisto — Niort</p>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('done')},800)});
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50)});
+const reveals=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.08,rootMargin:'0px 0px -50px 0px'});
+reveals.forEach(r=>observer.observe(r));
+</script>
+</body>
+</html>
